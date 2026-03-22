@@ -29,3 +29,4 @@ pnpm-debug.log*
 
 # Claude Code local session data
 .claude/
+DEVLOG.md
