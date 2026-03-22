@@ -1,0 +1,230 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config/site';
+
+const base = import.meta.env.BASE_URL;
+const cotizaUrl = `${base}/contacto?asunto=Cotizaci%C3%B3n`;
+const servicioUrl = `${base}/contacto?asunto=Servicio%20T%C3%A9cnico`;
+const garantiasUrl = `${base}/servicio-cliente#garantias`;
+---
+
+<Layout
+  title="Servicios"
+  description="Refacciones, soporte técnico, instalaciones en sitio y garantías extendidas para sistemas ULTREC."
+>
+  <div class="page-wrapper">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Servicios</h1>
+        <p class="page-desc">
+          El respaldo post-venta que tus equipos necesitan. Desde refacciones originales hasta soporte técnico
+          presencial y planes de garantía extendida.
+        </p>
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="container">
+        <div class="services-grid">
+
+          <!-- Refacciones -->
+          <article class="service-card card-glow">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
+            </div>
+            <h2 class="service-name">Refacciones</h2>
+            <p class="service-desc">
+              Piezas de repuesto originales para todos los modelos ULTREC. Garantiza la continuidad operativa
+              de tus equipos con partes certificadas de fábrica.
+            </p>
+            <a href={cotizaUrl} class="service-cta">Consultar disponibilidad →</a>
+          </article>
+
+          <!-- Soporte Técnico -->
+          <article class="service-card card-glow">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.87-1.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <h2 class="service-name">Soporte Técnico</h2>
+            <p class="service-desc">
+              Atención telefónica y presencial para diagnóstico, configuración y resolución de fallas.
+              Nuestro equipo está disponible para asistirte.
+            </p>
+            <div class="service-phones">
+              <a href={`tel:${SITE.contact.phoneService1.replace(/\s/g,'')}`} class="phone-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.87-1.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                {SITE.contact.phoneService1}
+              </a>
+              <a href={`tel:${SITE.contact.phoneService2.replace(/\s/g,'')}`} class="phone-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.87-1.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                {SITE.contact.phoneService2}
+              </a>
+            </div>
+          </article>
+
+          <!-- Instalaciones en Sitio -->
+          <article class="service-card card-glow">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="9" y1="21" x2="9" y2="9"/>
+              </svg>
+            </div>
+            <h2 class="service-name">Instalaciones en Sitio</h2>
+            <p class="service-desc">
+              Nuestro equipo realiza la instalación profesional en tu instalación. Cotización personalizada
+              según ubicación y complejidad del proyecto.
+            </p>
+            <a href={cotizaUrl} class="service-cta">Solicitar instalación →</a>
+          </article>
+
+          <!-- Garantías Extendidas -->
+          <article class="service-card card-glow">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <h2 class="service-name">Garantías Extendidas</h2>
+            <p class="service-desc">
+              Amplía la cobertura de tu equipo con nuestros planes de garantía extendida de 2 o 3 años.
+              Protección completa para tu inversión.
+            </p>
+            <a href={garantiasUrl} class="service-cta">Ver planes →</a>
+          </article>
+
+          <!-- Servicio Técnico Multimarca -->
+          <article class="service-card card-glow service-card--wide">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+              </svg>
+            </div>
+            <h2 class="service-name">Servicio Técnico Multimarca</h2>
+            <p class="service-desc">
+              Diagnóstico, reparación y mantenimiento de sistemas de control de acceso de otras marcas.
+              Diagnóstico inicial sin costo.
+            </p>
+            <a href={servicioUrl} class="service-cta">Solicitar diagnóstico →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-wrapper {
+    background: var(--color-bg);
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 64px 0 48px;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 8vw, 96px);
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0 0 16px;
+  }
+  .page-desc {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0;
+  }
+  .services-section {
+    padding: 72px 0;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 640px) {
+    .services-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+    .service-card--wide { grid-column: span 1; }
+  }
+  .service-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .service-icon {
+    color: var(--color-cyan);
+    width: 36px;
+    height: 36px;
+  }
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+  .service-desc {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+  }
+  .service-cta {
+    color: var(--color-cyan);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+    align-self: flex-start;
+    margin-top: auto;
+    font-family: var(--font-body);
+  }
+  .service-cta:hover {
+    color: var(--color-glow);
+  }
+  .service-phones {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+  }
+  .phone-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-cyan);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    transition: color 0.2s;
+  }
+  .phone-link:hover {
+    color: var(--color-glow);
+  }
+</style>

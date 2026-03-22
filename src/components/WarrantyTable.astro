@@ -1,0 +1,70 @@
+---
+const rows = [
+  { equipo: 'Torniquete en Acero Inoxidable', garantia: '12 meses', condicion: 'Máximo 5,000 ciclos/trimestre sin servicio' },
+  { equipo: 'Torniquete en Acero Negro',      garantia: '6 meses',  condicion: 'Máximo 5,000 ciclos/trimestre sin servicio' },
+  { equipo: 'Tarjetas Electrónicas',          garantia: '6 meses',  condicion: 'Protección eléctrica obligatoria' },
+  { equipo: 'Monederos Multimoneda',          garantia: '6 meses',  condicion: 'Protección eléctrica y limpieza trimestral' },
+];
+---
+
+<div class="table-wrapper">
+  <table class="warranty-table">
+    <thead>
+      <tr>
+        <th>Equipo</th>
+        <th>Garantía</th>
+        <th>Condición de operación</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <td>{row.equipo}</td>
+          <td class="garantia">{row.garantia}</td>
+          <td>{row.condicion}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+  .warranty-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: 15px;
+  }
+  .warranty-table thead tr {
+    background: var(--color-cyan);
+  }
+  .warranty-table th {
+    color: #040D1A;
+    font-weight: 700;
+    text-align: left;
+    padding: 14px 20px;
+    white-space: nowrap;
+  }
+  .warranty-table td {
+    padding: 14px 20px;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+  .warranty-table tbody tr {
+    background: var(--color-surface);
+  }
+  .warranty-table tbody tr:nth-child(even) {
+    background: var(--color-surface-alt);
+  }
+  .garantia {
+    color: var(--color-cyan) !important;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+</style>

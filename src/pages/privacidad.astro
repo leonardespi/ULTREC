@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config/site';
+
+const buildDate = new Date().toLocaleDateString('es-MX', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout
+  title="Aviso de Privacidad"
+  description="Aviso de Privacidad de ULTREC conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares."
+>
+  <div class="page-wrapper">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Aviso de Privacidad</h1>
+        <p class="date">Última actualización: {buildDate}</p>
+      </div>
+    </section>
+
+    <section class="prose-section">
+      <div class="container prose">
+
+        <h2>1. Identidad y Domicilio del Responsable</h2>
+        <p>
+          <strong>ULTREC</strong> ("el Responsable"), con domicilio en {SITE.contact.address},
+          es responsable del tratamiento de sus datos personales conforme a lo establecido en la
+          <em>Ley Federal de Protección de Datos Personales en Posesión de los Particulares</em>
+          (LFPDPPP) y su Reglamento.
+        </p>
+
+        <h2>2. Datos Personales que se Recaban</h2>
+        <p>
+          Para las finalidades descritas en el presente aviso, ULTREC podrá recabar los siguientes
+          datos personales:
+        </p>
+        <ul>
+          <li>Nombre completo</li>
+          <li>Nombre o razón social de la empresa</li>
+          <li>Correo electrónico</li>
+          <li>Número telefónico</li>
+          <li>Mensaje o descripción del proyecto o consulta</li>
+        </ul>
+        <p>
+          ULTREC no recaba datos personales sensibles en ninguna de sus plataformas digitales.
+        </p>
+
+        <h2>3. Finalidades del Tratamiento</h2>
+        <p>Sus datos personales serán utilizados para las siguientes finalidades:</p>
+        <ul>
+          <li>Atender solicitudes de cotización de productos y servicios.</li>
+          <li>Brindar soporte técnico y seguimiento post-venta.</li>
+          <li>Comunicación comercial relacionada con los productos y servicios de ULTREC.</li>
+          <li>Cumplimiento de obligaciones derivadas de una relación comercial.</li>
+        </ul>
+
+        <h2>4. Transferencia de Datos Personales</h2>
+        <p>
+          ULTREC no transferirá sus datos personales a terceros sin su consentimiento previo,
+          salvo en los casos previstos por el artículo 37 de la LFPDPPP o cuando sea requerido
+          por autoridad competente.
+        </p>
+
+        <h2>5. Derechos ARCO</h2>
+        <p>
+          Usted tiene derecho a <strong>Acceder</strong>, <strong>Rectificar</strong>,
+          <strong>Cancelar</strong> u <strong>Oponerse</strong> al tratamiento de sus datos personales
+          (derechos ARCO). Para ejercer estos derechos, puede enviar una solicitud al correo:
+        </p>
+        <p>
+          <a href={`mailto:${SITE.contact.emailSales}`}>{SITE.contact.emailSales}</a>
+        </p>
+        <p>
+          Su solicitud deberá incluir: nombre completo, descripción clara del derecho que desea
+          ejercer, y una copia de su identificación oficial. ULTREC responderá en un plazo máximo
+          de 20 días hábiles.
+        </p>
+
+        <h2>6. Uso de Cookies</h2>
+        <p>
+          El sitio web de ULTREC puede utilizar cookies técnicas de sesión necesarias para el
+          funcionamiento básico del sitio (por ejemplo, para recordar la preferencia de cierre del
+          aviso de ventas). No se utilizan cookies de rastreo de terceros ni tecnologías similares
+          para publicidad dirigida.
+        </p>
+
+        <h2>7. Cambios al Aviso de Privacidad</h2>
+        <p>
+          ULTREC se reserva el derecho de modificar o actualizar el presente Aviso de Privacidad
+          en cualquier momento, para dar atención a novedades legislativas, políticas internas o
+          nuevos requerimientos para la prestación de servicios. La versión vigente estará siempre
+          disponible en este mismo URL.
+        </p>
+
+        <h2>8. Fecha de Última Actualización</h2>
+        <p>{buildDate}</p>
+
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-wrapper {
+    background: var(--color-bg);
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 64px 0 40px;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 72px);
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0 0 8px;
+  }
+  .date {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 14px;
+    margin: 0;
+  }
+  .prose-section {
+    padding: 64px 0 80px;
+  }
+  .prose {
+    max-width: 720px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+  }
+  .prose h2 {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 32px);
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 48px 0 16px;
+  }
+  .prose h2:first-child {
+    margin-top: 0;
+  }
+  .prose p {
+    margin: 0 0 16px;
+  }
+  .prose ul {
+    margin: 0 0 16px;
+    padding-left: 24px;
+  }
+  .prose li {
+    margin-bottom: 8px;
+  }
+  .prose strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .prose em {
+    color: var(--color-text);
+    font-style: italic;
+  }
+  .prose a {
+    color: var(--color-cyan);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .prose a:hover {
+    color: var(--color-glow);
+    text-decoration: underline;
+  }
+</style>

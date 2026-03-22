@@ -1,0 +1,342 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WarrantyTable from '../components/WarrantyTable.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const plans = [
+  {
+    name: 'Garantía Estándar',
+    period: '1 año',
+    desc: 'Incluida con la compra de cualquier equipo ULTREC.',
+    highlight: false,
+  },
+  {
+    name: 'Garantía Extendida Básica',
+    period: '2 o 3 años',
+    desc: 'Cubre partes y mano de obra más allá de la garantía estándar.',
+    highlight: true,
+  },
+  {
+    name: 'Garantía Extendida Plus',
+    period: '2 o 3 años',
+    desc: 'Incluye mantenimiento preventivo programado adicional a la cobertura de partes y mano de obra.',
+    highlight: false,
+  },
+];
+
+const maintenance = [
+  'Servicio de instalación en sitio — por cotización',
+  'Mantenimiento preventivo — según programa de póliza anual',
+  'Mantenimiento programado de 2 a 3 años en garantías extendidas',
+  'Servicio de mantenimiento o cambio de sistema a otras marcas',
+];
+---
+
+<Layout
+  title="Servicio al Cliente"
+  description="Planes de garantía, tabla de garantías por equipo, facilidades de pago y preguntas frecuentes sobre los productos ULTREC."
+>
+  <div class="page-wrapper">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Servicio al Cliente</h1>
+        <p class="page-desc">
+          Tu inversión está protegida. Conoce nuestros planes de garantía, servicios de mantenimiento y
+          facilidades de pago.
+        </p>
+      </div>
+    </section>
+
+    <!-- Warranty Table -->
+    <section class="content-section" id="garantias" aria-labelledby="warranty-heading">
+      <div class="container">
+        <h2 id="warranty-heading" class="section-heading">
+          <span class="section-line"></span>
+          Tabla de Garantías
+        </h2>
+        <WarrantyTable />
+      </div>
+    </section>
+
+    <!-- Service Plans -->
+    <section class="content-section alt-bg" aria-labelledby="plans-heading">
+      <div class="container">
+        <h2 id="plans-heading" class="section-heading">
+          <span class="section-line"></span>
+          Planes de Servicio
+        </h2>
+        <div class="plans-grid">
+          {plans.map(plan => (
+            <div class={`plan-card card-glow${plan.highlight ? ' plan-card--highlight' : ''}`}>
+              <div class="plan-period">{plan.period}</div>
+              <h3 class="plan-name">{plan.name}</h3>
+              <p class="plan-desc">{plan.desc}</p>
+              <a href={`${base}/contacto`} class="plan-cta">Consultar →</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation & Maintenance -->
+    <section class="content-section" aria-labelledby="maint-heading">
+      <div class="container content-narrow">
+        <h2 id="maint-heading" class="section-heading">
+          <span class="section-line"></span>
+          Instalación y Mantenimiento
+        </h2>
+        <ul class="maint-list" role="list">
+          {maintenance.map(item => (
+            <li class="maint-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="maint-icon" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Financing -->
+    <section class="content-section alt-bg" aria-labelledby="financing-heading">
+      <div class="container content-narrow">
+        <h2 id="financing-heading" class="section-heading">
+          <span class="section-line"></span>
+          Facilidades de Pago
+        </h2>
+        <p class="financing-intro">
+          En ULTREC ofrecemos facilidades de pago para hacerte más accesibles nuestros productos. Para torniquetes:
+        </p>
+        <div class="financing-options">
+          <div class="financing-card card-glow">
+            <div class="financing-label">Opción A</div>
+            <h3 class="financing-title">Anticipo y Diferido</h3>
+            <p class="financing-desc">
+              60% de anticipo y 40% restante en 1 a 2 meses.
+            </p>
+          </div>
+          <div class="financing-card card-glow">
+            <div class="financing-label">Opción B</div>
+            <h3 class="financing-title">Participación en Ganancias</h3>
+            <p class="financing-desc">
+              Sin anticipo total. ULTREC retiene el 25% de las ganancias generadas por el torniquete hasta
+              completar el valor del equipo en un plazo de 6 a 12 meses.
+            </p>
+          </div>
+        </div>
+        <p class="financing-note">
+          * Aplica únicamente para torniquetes. Consulta a tu asesor para más detalles.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="content-section" aria-labelledby="faq-heading">
+      <div class="container content-narrow">
+        <h2 id="faq-heading" class="section-heading">
+          <span class="section-line"></span>
+          Preguntas Frecuentes
+        </h2>
+        <FaqAccordion />
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-wrapper {
+    background: var(--color-bg);
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .content-narrow {
+    max-width: 900px;
+  }
+  .page-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 64px 0 48px;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 80px);
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0 0 16px;
+  }
+  .page-desc {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0;
+  }
+  .content-section {
+    padding: 72px 0;
+    background: var(--color-bg);
+  }
+  .alt-bg {
+    background: var(--color-surface-alt);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 48px);
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0 0 36px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-line {
+    display: block;
+    width: 4px;
+    height: 1em;
+    background: var(--color-cyan);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* Plans */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 640px) {
+    .plans-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .plan-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .plan-card--highlight {
+    border-color: var(--color-cyan);
+    position: relative;
+  }
+  .plan-period {
+    color: var(--color-cyan);
+    font-family: var(--font-display);
+    font-size: 20px;
+    letter-spacing: 0.08em;
+  }
+  .plan-name {
+    font-family: var(--font-display);
+    font-size: 26px;
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+  .plan-desc {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+  }
+  .plan-cta {
+    color: var(--color-cyan);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s;
+    align-self: flex-start;
+    font-family: var(--font-body);
+  }
+  .plan-cta:hover {
+    color: var(--color-glow);
+  }
+
+  /* Maintenance */
+  .maint-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .maint-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .maint-icon {
+    color: var(--color-cyan);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Financing */
+  .financing-intro {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0 0 28px;
+  }
+  .financing-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 640px) {
+    .financing-options { grid-template-columns: 1fr 1fr; }
+  }
+  .financing-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .financing-label {
+    color: var(--color-cyan);
+    font-family: var(--font-display);
+    font-size: 16px;
+    letter-spacing: 0.08em;
+  }
+  .financing-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+  .financing-desc {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .financing-note {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-style: italic;
+    margin: 0;
+  }
+</style>

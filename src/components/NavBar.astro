@@ -1,0 +1,270 @@
+---
+import { SITE } from '../config/site';
+const base = import.meta.env.BASE_URL;
+
+const navLinks = [
+  { href: `${base}/`,                  label: 'Inicio' },
+  { href: `${base}/dispositivos`,      label: 'Dispositivos' },
+  { href: `${base}/servicios`,          label: 'Servicios' },
+  { href: `${base}/servicio-cliente`,  label: 'Servicio al Cliente' },
+  { href: `${base}/contacto`,          label: 'Contacto' },
+];
+---
+
+<header id="navbar" aria-label="Navegación principal">
+  <nav>
+    <a href={`${base}/`} class="logo-link" aria-label="ULTREC — Inicio">
+      <img
+        src={`${base}/imgs/logo-ultrec.png`}
+        alt="ULTREC"
+        width="120"
+        height="48"
+        class="logo-img"
+      />
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="desktop-links" role="list">
+      {navLinks.map(link => (
+        <li>
+          <a href={link.href} class="nav-link">{link.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Cotizar CTA (desktop) -->
+    <a href={`${base}/contacto#form`} class="cta-btn desktop-cta">Cotizar</a>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="hamburger"
+      aria-label="Abrir menú de navegación"
+      aria-expanded="false"
+      aria-controls="mobile-drawer"
+      type="button"
+      class="hamburger"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile drawer -->
+<div id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menú de navegación" class="drawer">
+  <button
+    id="drawer-close"
+    aria-label="Cerrar menú"
+    type="button"
+    class="drawer-close"
+  >×</button>
+  <ul role="list" class="drawer-links">
+    {navLinks.map(link => (
+      <li>
+        <a href={link.href} class="drawer-link">{link.label}</a>
+      </li>
+    ))}
+    <li>
+      <a href={`${base}/contacto#form`} class="cta-btn drawer-cta">Cotizar</a>
+    </li>
+  </ul>
+</div>
+<div id="drawer-overlay" class="drawer-overlay"></div>
+
+<style>
+  #navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transition: background 0.3s, backdrop-filter 0.3s;
+    background: rgba(4, 13, 26, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 64px;
+  }
+  .logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
+  .desktop-links {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 28px;
+    flex: 1;
+  }
+  .nav-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-link:hover {
+    color: var(--color-cyan);
+  }
+  .cta-btn {
+    background: var(--color-cyan);
+    color: #040D1A;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .cta-btn:hover {
+    background: var(--color-cyan-dark);
+  }
+  .desktop-cta {
+    display: none;
+    margin-left: auto;
+  }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: opacity 0.2s;
+  }
+
+  /* Drawer */
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: min(320px, 85vw);
+    height: 100vh;
+    background: var(--color-surface);
+    z-index: 200;
+    padding: 80px 32px 40px;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--color-border);
+  }
+  .drawer.open {
+    right: 0;
+  }
+  .drawer-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 8px;
+  }
+  .drawer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .drawer-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 18px;
+    transition: color 0.2s;
+  }
+  .drawer-link:hover {
+    color: var(--color-cyan);
+  }
+  .drawer-cta {
+    display: inline-block;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 150;
+  }
+  .drawer-overlay.open {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .desktop-links {
+      display: flex;
+    }
+    .desktop-cta {
+      display: inline-block;
+    }
+    .hamburger {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('drawer-overlay');
+  const closeBtn = document.getElementById('drawer-close');
+
+  function openDrawer() {
+    drawer?.classList.add('open');
+    overlay?.classList.add('open');
+    hamburger?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer?.classList.remove('open');
+    overlay?.classList.remove('open');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  hamburger?.addEventListener('click', openDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+  overlay?.addEventListener('click', closeDrawer);
+
+  // Close drawer on nav link click
+  drawer?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Keyboard: Escape closes drawer
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  });
+</script>

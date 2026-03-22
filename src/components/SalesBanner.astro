@@ -1,0 +1,80 @@
+---
+import { SITE } from '../config/site';
+---
+
+<div id="sales-banner" role="banner" aria-label="Información de contacto de ventas">
+  <div class="banner-inner">
+    <span>
+      Ventas:&nbsp;
+      <a href={`mailto:${SITE.contact.emailSales}`}>{SITE.contact.emailSales}</a>
+      &nbsp;|&nbsp;
+      Tel.&nbsp;
+      <a href={`tel:${SITE.contact.phoneSales.replace(/\s/g, '')}`}>{SITE.contact.phoneSales}</a>
+    </span>
+    <button
+      id="sales-banner-close"
+      aria-label="Cerrar aviso de ventas"
+      type="button"
+    >×</button>
+  </div>
+</div>
+
+<style>
+  #sales-banner {
+    background: var(--color-cyan);
+    color: #040D1A;
+    font-size: 12px;
+    font-family: var(--font-body);
+    width: 100%;
+    position: relative;
+    z-index: 100;
+  }
+  .banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 40px 6px 16px;
+    gap: 8px;
+    position: relative;
+  }
+  #sales-banner a {
+    color: #040D1A;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  #sales-banner a:hover {
+    text-decoration: underline;
+  }
+  #sales-banner-close {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #040D1A;
+    line-height: 1;
+    padding: 2px 4px;
+    opacity: 0.7;
+  }
+  #sales-banner-close:hover {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  const BANNER_KEY = 'ultrec-banner-dismissed';
+  const banner = document.getElementById('sales-banner');
+  const closeBtn = document.getElementById('sales-banner-close');
+
+  if (sessionStorage.getItem(BANNER_KEY) === '1') {
+    banner?.remove();
+  }
+
+  closeBtn?.addEventListener('click', () => {
+    sessionStorage.setItem(BANNER_KEY, '1');
+    banner?.remove();
+  });
+</script>

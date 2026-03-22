@@ -1,0 +1,104 @@
+---
+const faqs = [
+  {
+    q: '¿Qué necesito para cotizar?',
+    a: 'Fotos y medidas del área donde desea controlar el acceso. Con esa información preparamos una propuesta a la medida.',
+  },
+  {
+    q: '¿Cuánto cuesta un torniquete?',
+    a: 'El precio depende del modelo, materiales y condiciones de instalación. Realizamos un levantamiento físico para preparar una cotización precisa. Contáctenos para más información.',
+  },
+  {
+    q: '¿Qué garantía tienen los productos?',
+    a: 'Nuestros productos tienen garantía de 6 a 12 meses según el modelo, con opción a garantías extendidas de 2 y 3 años.',
+  },
+  {
+    q: '¿Cuántos años de experiencia tienen?',
+    a: 'Empezamos a fabricar torniquetes en 2014 y ULTREC se consolidó en 2017. Más de 10 años de experiencia nos respaldan.',
+  },
+  {
+    q: '¿Dónde puedo ver referencias de sus clientes?',
+    a: 'Contamos con una cartera de clientes en casi toda la república mexicana. Por protección de datos personales, compartimos referencias bajo autorización del cliente. Solicítelas a su asesor.',
+  },
+  {
+    q: '¿Dónde están ubicados?',
+    a: 'Operamos desde la Ciudad de México con cobertura nacional. Nuestra dirección fiscal está en CDMX.',
+  },
+  {
+    q: '¿Ofrecen facilidades de pago?',
+    a: 'Sí. Para torniquetes ofrecemos un esquema de 60% de anticipo y 40% a 1–2 meses, o bien un plan de participación en ganancias del 25% durante 6 a 12 meses hasta completar el valor del equipo. Consulta a tu asesor para conocer la opción que mejor se adapte a tu proyecto.',
+  },
+];
+---
+
+<div class="faq-list">
+  {faqs.map((faq, i) => (
+    <details class="faq-item" name="faq">
+      <summary class="faq-question">
+        <span>{faq.q}</span>
+        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </summary>
+      <div class="faq-answer">
+        <p>{faq.a}</p>
+      </div>
+    </details>
+  ))}
+</div>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .faq-item[open] {
+    border-color: var(--color-cyan);
+  }
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    user-select: none;
+    transition: color 0.2s;
+  }
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  .faq-question:hover {
+    color: var(--color-cyan);
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+    color: var(--color-cyan);
+  }
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+  .faq-answer {
+    padding: 0 24px 20px;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .faq-answer p {
+    margin: 0;
+  }
+</style>

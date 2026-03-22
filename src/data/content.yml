@@ -1,0 +1,147 @@
+# ============================================================
+# ULTREC — Site Content Configuration
+# ============================================================
+# This file is the single source of truth for all editable
+# site content: hero image, product carousel, and the
+# Dispositivos catalog.
+#
+# HOW TO USE
+# ----------
+# • Change `image:` to any filename inside the Imgs/ folder.
+#   If the file doesn't exist the site falls back to placeholder.png.
+# • Add or remove items under `carousel` or any product category.
+# • `variants` is optional — omit the key or leave it empty ([])
+#   if the product has no model variants.
+# • The `identification` grid is also editable here.
+# ============================================================
+
+
+# ------------------------------------------------------------
+# HERO
+# Background image for the home-page hero section.
+# Supports .jpg or .png — must exist in Imgs/
+# ------------------------------------------------------------
+hero:
+  image: hero-img.jpg
+
+
+# ------------------------------------------------------------
+# CAROUSEL
+# Shown on the home page. Add or remove slides freely.
+# Fields: name, image, description
+# ------------------------------------------------------------
+carousel:
+  - name: Torniquete Bidireccional en Acero al Carbón — Modelo Premium
+    image: dispositivo-1.png
+    description: Control de acceso de cuerpo completo en acero negro. Bidireccional, apto para entornos industriales de alto tráfico.
+
+  - name: Torniquete Bidireccional en Acero Inoxidable — Modelo Premium
+    image: dispositivo-2.png
+    description: Control de acceso de cuerpo completo en acero inoxidable. Mayor resistencia a la corrosión.
+
+  - name: Torniquete Doble Peine en Acero al Carbón — Modelo Premium
+    image: dispositivo-3.png
+    description: Diseño doble peine en acero negro. Estructura robusta para entornos de alta seguridad.
+
+  - name: Torniquete Doble Peine en Acero Inoxidable — Modelo Premium
+    image: dispositivo-4.png
+    description: Doble peine en acero inoxidable. Acabado premium, resistente a la corrosión y vandalismo.
+
+  - name: Control de Acceso 2 Puertas Doble Multimoneda Reforzado
+    image: dispositivo-5.png
+    description: Modelo doble con dos monederos multimoneda y estructura reforzada. Ideal para instalaciones de alto tráfico.
+
+  - name: Control de Acceso 1 Puerta
+    image: dispositivo-6.png
+    description: Modelo individual con monedero multimoneda. Control de acceso con cobro automático integrado.
+
+  - name: Máquina Vending Mecánica de 2 Resortes
+    image: placeholder.png
+    description: Máquina expendedora mecánica para la venta de toallas sanitarias.
+
+  - name: Máquina Vending Mecánica de 3 Resortes
+    image: placeholder.png
+    description: Máquina expendedora mecánica para la venta de toallas sanitarias.
+
+  - name: Máquina Vending Mecánica de 4 Resortes
+    image: placeholder.png
+    description: Máquina expendedora mecánica para la venta de toallas sanitarias.
+
+  - name: Refacciones
+    image: placeholder.png
+    description: Piezas de repuesto originales para todos los modelos ULTREC.
+
+
+# ------------------------------------------------------------
+# DISPOSITIVOS PAGE
+# Products are grouped into categories. Each category has a
+# title and a list of products.
+# Each product: name, image, description, variants (optional)
+# ------------------------------------------------------------
+dispositivos:
+  categories:
+    - id: torniquetes
+      title: Torniquetes de Cuerpo Completo
+      products:
+        - name: Torniquete Bidireccional en Acero al Carbón
+          image: dispositivo-1.png
+          description: Control de acceso de cuerpo completo en acero negro. Bidireccional, apto para entornos industriales de alto tráfico.
+          variants: [Básico, Universal, Plus, Premium]
+
+        - name: Torniquete Bidireccional en Acero Inoxidable
+          image: dispositivo-2.png
+          description: Control de acceso de cuerpo completo en acero inoxidable. Mayor resistencia a la corrosión, ideal para espacios con humedad o uso intensivo.
+          variants: [Básico, Universal, Plus, Premium]
+
+        - name: Torniquete Doble Peine en Acero al Carbón
+          image: dispositivo-3.png
+          description: Diseño doble peine en acero negro. Estructura robusta para entornos de alta seguridad.
+          variants: [Básico, Universal, Plus, Premium]
+
+        - name: Torniquete Doble Peine en Acero Inoxidable
+          image: dispositivo-4.png
+          description: Doble peine en acero inoxidable. Acabado premium, resistente a la corrosión y vandalismo.
+          variants: [Básico, Universal, Plus, Premium]
+
+    - id: acceso
+      title: Control de Acceso
+      products:
+        - name: Control de Acceso 1 Puerta
+          image: dispositivo-5.png
+          description: Modelo individual con monedero multimoneda. Control de acceso con cobro automático integrado.
+
+        - name: Control de Acceso 2 Puertas Doble Multimoneda Reforzado
+          image: dispositivo-6.png
+          description: Modelo doble con dos monederos multimoneda y estructura reforzada. Ideal para instalaciones de alto tráfico que requieren control simultáneo de dos accesos. Sistema de seguridad reforzado.
+
+    - id: vending
+      title: Máquinas Expendedoras (Vending)
+      products:
+        - name: Máquina Vending Mecánica
+          image: placeholder.png
+          description: "Máquina expendedora mecánica para la venta de toallas sanitarias. Disponible en configuraciones de 2, 3 o 4 resortes (18 espacios cada uno). Fabricada en acero al carbón cal. 18 con pintura electroestática blanca. Monederos mecánicos configurados para $5 o $10 MXN por unidad."
+          variants: [2 resortes, 3 resortes, 4 resortes]
+
+        - name: Máquina de Papel
+          image: placeholder.png
+          description: Máquina expendedora mecánica para la venta de papel. Diseño robusto para baños de alto tráfico.
+
+  # Identification methods shown as a supporting feature grid
+  identification:
+    - label: Lector Biométrico de Huella Digital
+      description: Identificación por huella dactilar
+
+    - label: Lector de Código de Barras / QR
+      description: Lectura de códigos QR y barras
+
+    - label: Control Remoto
+      description: Apertura por control remoto
+
+    - label: Tarjeta de Proximidad (RFID)
+      description: Acceso por tarjeta o llavero RFID
+
+    - label: Teclado Numérico
+      description: Acceso por PIN
+
+    - label: Monedero Multimoneda
+      description: Cobro automático por monedas

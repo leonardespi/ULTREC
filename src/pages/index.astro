@@ -1,0 +1,406 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCarousel from '../components/ProductCarousel.astro';
+import { SITE } from '../config/site';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { heroImage } from '../data/content';
+
+const base = import.meta.env.BASE_URL;
+
+// Check if about-photo exists (optional — not in content.yml, handled locally)
+const aboutPhotoExists =
+  existsSync(resolve('Imgs', 'about-photo.png')) ||
+  existsSync(resolve('Imgs', 'about-photo.jpg'));
+
+const valueProps = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    title: 'Fabricación Propia',
+    copy: 'Torniquetes y equipos fabricados directamente por ULTREC con control de calidad total.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`,
+    title: 'Ingeniería a la Medida',
+    copy: 'Proyectos personalizados según el espacio, tráfico y necesidades de cada cliente.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    title: 'Respaldo Post-Venta',
+    copy: 'Garantías de 6 a 36 meses y planes de mantenimiento preventivo incluidos.',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    title: 'Presencia Nacional',
+    copy: 'Instalaciones en toda la república mexicana con más de 10 años de experiencia.',
+  },
+];
+---
+
+<Layout
+  title="Inicio"
+  description="ULTREC fabrica torniquetes de cuerpo completo, sistemas de control de acceso y máquinas vending para espacios industriales y corporativos en México. Más de 10 años de experiencia."
+>
+  <!-- ─── HERO ─── -->
+  <section class="hero" aria-label="Presentación ULTREC">
+    {heroImage ? (
+      <div
+        class="hero-bg"
+        style={`background-image: url('${base}/imgs/${heroImage}')`}
+        role="img"
+        aria-label="Torniquetes industriales ULTREC"
+      ></div>
+    ) : (
+      <div class="hero-bg hero-bg--fallback"></div>
+    )}
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-headline">ULTREC</h1>
+      <p class="hero-sub">{SITE.tagline}</p>
+      <div class="hero-ctas">
+        <a href={`${base}/dispositivos`} class="btn btn-primary">Ver Productos</a>
+        <a href={`${base}/contacto`} class="btn btn-outline">Solicitar Cotización</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VALUE PROPS ─── -->
+  <section class="value-props" aria-label="Propuesta de valor">
+    <div class="container">
+      <div class="props-grid">
+        {valueProps.map(prop => (
+          <div class="prop-card card-glow">
+            <div class="prop-icon" set:html={prop.icon} />
+            <h3 class="prop-title">{prop.title}</h3>
+            <p class="prop-copy">{prop.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRODUCT CAROUSEL ─── -->
+  <section class="carousel-section" aria-label="Catálogo de productos">
+    <div class="container">
+      <h2 class="section-heading">Nuestros Productos</h2>
+      <p class="section-sub">Soluciones de acceso y retail autónomo para espacios industriales y corporativos.</p>
+      <ProductCarousel />
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─── -->
+  <section class="about-section" aria-label="Acerca de ULTREC">
+    <div class="container">
+      {aboutPhotoExists ? (
+        <div class="about-grid">
+          <div class="about-text">
+            <h2 class="section-heading">Más de 10 Años Protegiendo Espacios</h2>
+            <p>
+              ULTREC es una empresa mexicana especializada en la fabricación e integración de sistemas de control
+              de acceso y retail autónomo. Fabricamos torniquetes de cuerpo completo, sistemas de control de acceso
+              con monedero multimoneda y máquinas expendedoras mecánicas. Con más de 10 años de experiencia,
+              nuestras soluciones protegen espacios industriales, corporativos y de alto tráfico en toda la
+              república mexicana.
+            </p>
+            <p>
+              Desde nuestros inicios en 2014 hasta la consolidación de la marca ULTREC en 2017, hemos desarrollado
+              proyectos a la medida para cientos de clientes en toda la república.
+            </p>
+          </div>
+          <div class="about-img-wrap">
+            <img
+              src={`${base}/imgs/about-photo.png`}
+              alt="Equipo e instalaciones ULTREC"
+              class="about-img"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      ) : (
+        <div class="about-centered">
+          <div class="about-divider"></div>
+          <h2 class="section-heading">Más de 10 Años Protegiendo Espacios</h2>
+          <p class="about-text-full">
+            ULTREC es una empresa mexicana especializada en la fabricación e integración de sistemas de control
+            de acceso y retail autónomo. Fabricamos torniquetes de cuerpo completo, sistemas de control de acceso
+            con monedero multimoneda y máquinas expendedoras mecánicas. Con más de 10 años de experiencia,
+            nuestras soluciones protegen espacios industriales, corporativos y de alto tráfico en toda la
+            república mexicana.
+          </p>
+          <p class="about-text-full">
+            Desde nuestros inicios en 2014 hasta la consolidación de la marca ULTREC en 2017, hemos desarrollado
+            proyectos a la medida para cientos de clientes en toda la república.
+          </p>
+          <div class="about-divider"></div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ─── CTA BAND ─── -->
+  <section class="cta-band" aria-label="Llamada a la acción">
+    <div class="cta-band-bg"></div>
+    <div class="container cta-inner">
+      <p class="cta-text">¿Listo para asegurar tu espacio? Solicita una cotización hoy.</p>
+      <a href={`${base}/contacto`} class="btn btn-primary">Cotizar Ahora</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: -64px; /* offset layout padding */
+    padding-top: 64px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .hero-bg--fallback {
+    background: var(--color-surface-alt);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 13, 26, 0.70);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 48px 24px;
+    max-width: 800px;
+  }
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(80px, 18vw, 200px);
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin: 0 0 16px;
+  }
+  .hero-sub {
+    color: var(--color-cyan);
+    font-family: var(--font-body);
+    font-size: clamp(16px, 2.5vw, 22px);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 40px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--color-cyan);
+    color: #040D1A;
+    border: 2px solid var(--color-cyan);
+  }
+  .btn-primary:hover {
+    background: var(--color-cyan-dark);
+    border-color: var(--color-cyan-dark);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--color-cyan);
+    border: 2px solid var(--color-cyan);
+  }
+  .btn-outline:hover {
+    background: var(--color-cyan);
+    color: #040D1A;
+  }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0 0 16px;
+  }
+  .section-sub {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 16px;
+    margin: 0 0 40px;
+    max-width: 600px;
+  }
+
+  /* ── VALUE PROPS ── */
+  .value-props {
+    background: var(--color-surface-alt);
+    padding: 64px 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .props-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 640px) {
+    .props-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1024px) {
+    .props-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .prop-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .prop-icon {
+    color: var(--color-cyan);
+    width: 32px;
+    height: 32px;
+  }
+  .prop-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+  .prop-copy {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── CAROUSEL SECTION ── */
+  .carousel-section {
+    padding: 80px 0;
+    background: var(--color-bg);
+  }
+
+  /* ── ABOUT ── */
+  .about-section {
+    background: var(--color-surface);
+    padding: 80px 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .about-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .about-text p {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0;
+  }
+  .about-img-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+  .about-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .about-centered {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .about-text-full {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0;
+  }
+  .about-divider {
+    width: 80px;
+    height: 3px;
+    background: var(--color-cyan);
+    border-radius: 2px;
+  }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    position: relative;
+    padding: 80px 0;
+    overflow: hidden;
+    background: var(--color-surface-alt);
+  }
+  .cta-band-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0, 200, 240, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+  }
+  .cta-text {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4vw, 40px);
+    color: var(--color-text);
+    letter-spacing: 0.04em;
+    margin: 0;
+    max-width: 700px;
+  }
+</style>

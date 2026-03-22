@@ -1,0 +1,348 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { SITE } from '../config/site';
+---
+
+<Layout
+  title="Contacto"
+  description="Contáctanos para cotizaciones, soporte técnico o información sobre nuestros productos ULTREC."
+>
+  <div class="page-wrapper">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Contacto</h1>
+        <p class="page-desc">
+          Estamos listos para atenderte. Cuéntanos tu proyecto y te preparamos una propuesta a la medida.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Contact Form -->
+          <div class="form-col" id="form">
+            <h2 class="col-heading">Envíanos un Mensaje</h2>
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre completo <span aria-hidden="true" class="required">*</span></label>
+                <input type="text" id="nombre" name="nombre" required class="form-input" placeholder="Tu nombre completo" autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="empresa" class="form-label">Empresa <span aria-hidden="true" class="required">*</span></label>
+                <input type="text" id="empresa" name="empresa" required class="form-input" placeholder="Nombre de tu empresa" autocomplete="organization" />
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Correo electrónico <span aria-hidden="true" class="required">*</span></label>
+                <input type="email" id="email" name="email" required class="form-input" placeholder="tu@correo.com" autocomplete="email" />
+              </div>
+              <div class="form-group">
+                <label for="telefono" class="form-label">Teléfono <span class="optional">(opcional)</span></label>
+                <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="+52 55 0000 0000" autocomplete="tel" />
+              </div>
+              <div class="form-group">
+                <label for="asunto" class="form-label">Asunto <span aria-hidden="true" class="required">*</span></label>
+                <select id="asunto" name="asunto" required class="form-input form-select">
+                  <option value="" disabled selected>Selecciona un asunto</option>
+                  <option value="Cotización">Cotización</option>
+                  <option value="Servicio Técnico">Servicio Técnico</option>
+                  <option value="Galería">Galería</option>
+                  <option value="Catálogo">Catálogo</option>
+                  <option value="Contacto General">Contacto General</option>
+                  <option value="Proyectos Personalizados">Proyectos Personalizados</option>
+                  <option value="Videos">Videos</option>
+                  <option value="Cotizador">Cotizador</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="mensaje" class="form-label">Mensaje <span aria-hidden="true" class="required">*</span></label>
+                <textarea id="mensaje" name="mensaje" required class="form-input form-textarea" placeholder="Describe tu proyecto o consulta..." rows="5"></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Enviar Mensaje</button>
+              <p class="form-note">* Campos requeridos. Al enviar, se abrirá tu cliente de correo.</p>
+            </form>
+          </div>
+
+          <!-- Direct Contact Info -->
+          <div class="info-col">
+            <h2 class="col-heading">Información Directa</h2>
+            <ul class="info-list" role="list">
+              <li class="info-item">
+                <div class="info-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <div class="info-label">Correo Ventas</div>
+                  <a href={`mailto:${SITE.contact.emailSales}`} class="info-value">{SITE.contact.emailSales}</a>
+                </div>
+              </li>
+              <li class="info-item">
+                <div class="info-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <div class="info-label">Correo Servicios</div>
+                  <a href={`mailto:${SITE.contact.emailService}`} class="info-value">{SITE.contact.emailService}</a>
+                </div>
+              </li>
+              <li class="info-item">
+                <div class="info-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.87-1.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <div class="info-label">Tel. Ventas / WhatsApp</div>
+                  <a href={`tel:${SITE.contact.phoneSales.replace(/\s/g,'')}`} class="info-value">{SITE.contact.phoneSales}</a>
+                </div>
+              </li>
+              <li class="info-item">
+                <div class="info-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.87-1.83a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <div class="info-label">Tel. Servicio</div>
+                  <div class="info-phones">
+                    <a href={`tel:${SITE.contact.phoneService1.replace(/\s/g,'')}`} class="info-value">{SITE.contact.phoneService1}</a>
+                    <span class="info-sep">/</span>
+                    <a href={`tel:${SITE.contact.phoneService2.replace(/\s/g,'')}`} class="info-value">{SITE.contact.phoneService2}</a>
+                  </div>
+                </div>
+              </li>
+              <li class="info-item">
+                <div class="info-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <div class="info-label">Dirección</div>
+                  <span class="info-value">{SITE.contact.address}</span>
+                </div>
+              </li>
+              <li class="info-item">
+                <div class="info-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <div class="info-label">Horario</div>
+                  <span class="info-value">{SITE.contact.hours}</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-section">
+          <h2 class="col-heading">Cómo Llegar</h2>
+          <MapEmbed />
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-wrapper {
+    background: var(--color-bg);
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 64px 0 48px;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 8vw, 96px);
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0 0 16px;
+  }
+  .page-desc {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0;
+  }
+  .contact-section {
+    padding: 72px 0;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  @media (min-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .col-heading {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 36px);
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+    margin: 0 0 28px;
+  }
+
+  /* Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-label {
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .required {
+    color: var(--color-cyan);
+  }
+  .optional {
+    color: var(--color-text-muted);
+    font-weight: 400;
+    font-size: 13px;
+  }
+  .form-input {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    padding: 12px 16px;
+    width: 100%;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-input:focus {
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 0 2px rgba(0, 200, 240, 0.15);
+  }
+  .form-input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+  .form-select {
+    cursor: pointer;
+    appearance: auto;
+  }
+  .form-select option {
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  .submit-btn {
+    background: var(--color-cyan);
+    color: #040D1A;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 32px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .submit-btn:hover {
+    background: var(--color-cyan-dark);
+  }
+  .form-note {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    margin: 0;
+  }
+
+  /* Info Panel */
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .info-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .info-icon {
+    color: var(--color-cyan);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .info-label {
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .info-value {
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 15px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  a.info-value:hover {
+    color: var(--color-cyan);
+  }
+  .info-phones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+  .info-sep {
+    color: var(--color-text-muted);
+  }
+
+  /* Map */
+  .map-section {
+    margin-top: 56px;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nombre  = (document.getElementById('nombre')  as HTMLInputElement)?.value.trim();
+    const empresa = (document.getElementById('empresa')  as HTMLInputElement)?.value.trim();
+    const email   = (document.getElementById('email')   as HTMLInputElement)?.value.trim();
+    const tel     = (document.getElementById('telefono') as HTMLInputElement)?.value.trim();
+    const asunto  = (document.getElementById('asunto')   as HTMLSelectElement)?.value;
+    const mensaje = (document.getElementById('mensaje')  as HTMLTextAreaElement)?.value.trim();
+
+    if (!nombre || !empresa || !email || !asunto || !mensaje) return;
+
+    const subject = encodeURIComponent(`[ULTREC] ${asunto} — ${empresa}`);
+    const body = encodeURIComponent(
+      `Nombre: ${nombre}\nEmpresa: ${empresa}\nCorreo: ${email}${tel ? `\nTeléfono: ${tel}` : ''}\nAsunto: ${asunto}\n\n${mensaje}`
+    );
+
+    window.location.href = `mailto:jser.herrera@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
