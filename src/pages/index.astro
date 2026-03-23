@@ -6,7 +6,7 @@ import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { heroImage } from '../data/content';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // Check if about-photo exists (optional — not in content.yml, handled locally)
 const aboutPhotoExists =

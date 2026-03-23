@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { SITE } from '../config/site';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const cotizaUrl = `${base}/contacto?asunto=Cotizaci%C3%B3n`;
 const servicioUrl = `${base}/contacto?asunto=Servicio%20T%C3%A9cnico`;
 const garantiasUrl = `${base}/servicio-cliente#garantias`;

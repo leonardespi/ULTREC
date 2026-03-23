@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { dispositivosCategories, identificationItems } from '../data/content';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const contactoUrl = `${base}/contacto?asunto=Cotizaci%C3%B3n`;
 
 // Alternate background on even-indexed categories

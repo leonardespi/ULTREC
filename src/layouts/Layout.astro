@@ -12,10 +12,12 @@ interface Props {
   ogImage?: string;
 }
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const {
   title = SITE.name,
   description = SITE.description,
-  ogImage = `${import.meta.env.BASE_URL}/og-image.png`,
+  ogImage = `${base}/og-image.png`,
 } = Astro.props;
 
 const pageTitle = title === SITE.name
@@ -53,8 +55,7 @@ const canonicalURL = new URL(Astro.url.pathname, SITE.url);
     <meta name="twitter:image" content={ogImage} />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}/favicon.png`} />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
 
     <!-- Google Fonts: Bebas Neue + Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

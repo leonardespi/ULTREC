@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import WarrantyTable from '../components/WarrantyTable.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const plans = [
   {
