@@ -3,7 +3,7 @@ export const SITE = {
   tagline: 'Sistemas de acceso y proyectos en tecnología',
   description:
     'ULTREC fabrica torniquetes de cuerpo completo, sistemas de control de acceso y máquinas vending para espacios industriales y corporativos en México.',
-  url: 'https://example.github.io/ULTREC', // TODO: update when domain/repo confirmed
+  url: 'https://ultrec.com.mx',
 
   contact: {
     emailSales:      'jherrera.ultrec@gmail.com',
